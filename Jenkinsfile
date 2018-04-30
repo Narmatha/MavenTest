@@ -1,17 +1,18 @@
 node('master') {
 
-	// def MVNHOME = tool 'Maven'
+	def MVNHOME = tool 'Maven'
+	
 	
 stage ('checkout code'){
 	checkout scm
 }
 	
 stage ('build'){
-	sh "mvn clean install"
+	sh "${MVNHOME}/bin/mvn clean install"
 }
 
 stage ('Test Cases Execution'){
-	sh "mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test"
+	sh "${MVNHOME}/bin/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Pcoverage-per-test"
 }
 	
 stage ('Integration Test'){
@@ -19,7 +20,7 @@ stage ('Integration Test'){
 }
 
 stage ('Sonar Analysis'){
-	//sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000/sonar'
+	//sh '${MVNHOME}/bin/mvn sonar:sonar -Dsonar.host.url=http://localhost:9000/sonar'
 }
 	
 stage('Code Coverage ') {
