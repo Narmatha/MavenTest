@@ -1,7 +1,7 @@
 node('master') {
 
 	def MVNHOME = tool 'Maven'
-	def ANSIBLE = tool 'Ansible'
+	def ANSIBLE = tool 'ansible'
 	
 stage ('checkout code'){
 	checkout scm
@@ -34,6 +34,7 @@ stage ('Archive Artifacts'){
 //input message: "QA Team Approval for Production Deployment?"
 
 stage ('Production Deployment'){
+    sh 'echo ${MVNHOME}'
     sh 'echo ${ANSIBLE}'
  	sh '${ANSIBLE}/ansible-playbook deploy.yml -i inventory.ini'
 }
