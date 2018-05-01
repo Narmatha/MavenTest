@@ -34,6 +34,7 @@ stage ('Archive Artifacts'){
 //input message: "QA Team Approval for Production Deployment?"
 
 stage ('Production Deployment'){
+    sh 'echo ${ANSIBLE}'
  	sh '${ANSIBLE}/ansible-playbook deploy.yml -i inventory.ini'
 }
 }
