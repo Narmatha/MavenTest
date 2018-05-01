@@ -36,4 +36,14 @@ stage ('Archive Artifacts'){
 stage ('Production Deployment'){
 	sh 'cp target/*.war /opt/tomcat8/webapps'
 }
+stage ('Deploy')
+{
+ansiColor('xterm') {
+    ansiblePlaybook(
+        playbook: deploy.yml,
+        inventory: inventory.ini,
+        credentialsId: 'sample-ssh-key',
+        colorized: true)
+}
+}
 }
