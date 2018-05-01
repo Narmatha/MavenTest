@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  remote_user: vagrant 
   vars:
   - warName: java-example.war
   - warRemotePath: /opt/apache-tomcat-8.5.30/webapps
