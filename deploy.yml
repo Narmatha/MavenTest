@@ -1,7 +1,7 @@
 ---
 - hosts: all
   vars:
-  - warName: helloworld.war
+  - warName: java-example.war
   - warRemotePath: /opt/apache-tomcat-8.5.30/webapps
 
   tasks:
