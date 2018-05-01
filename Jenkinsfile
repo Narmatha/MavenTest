@@ -1,7 +1,7 @@
 node('master') {
 
 	def MVNHOME = tool 'Maven'
-	def ANSIBLE = tool 'ansible'
+	def ANSIBLE = tool 'Ansible'
 	
 stage ('checkout code'){
 	checkout scm
