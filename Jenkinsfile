@@ -1,7 +1,7 @@
 node('master') {
 
 	def MVNHOME = tool 'Maven'
-	
+	def ANSIBLE = tool 'ansible'
 	
 stage ('checkout code'){
 	checkout scm
@@ -34,16 +34,6 @@ stage ('Archive Artifacts'){
 //input message: "QA Team Approval for Production Deployment?"
 
 stage ('Production Deployment'){
-//	sh 'cp target/*.war /opt/tomcat/webapps'
-}
-stage ('Deploy')
-{
-ansiColor('xterm') {
-    ansiblePlaybook(
-        playbook: deploy.yml,
-        inventory: inventory.ini,
-        credentialsId: 'sample-ssh-key',
-        colorized: true)
-}
+ 	sh '${ANSIBLE}/ansible-playbook deploy.yml -i inventory.ini'
 }
 }
