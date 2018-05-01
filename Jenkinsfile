@@ -36,6 +36,6 @@ stage ('Archive Artifacts'){
 stage ('Production Deployment'){
     sh 'echo ${MVNHOME}'
     sh 'echo ${ANSIBLE}'
- 	sh '${ANSIBLE}/ansible-playbook deploy.yml -i inventory.ini'
+ 	sh '/usr/local/bin/ansible-playbook deploy.yml -i inventory.ini'
 }
 }
