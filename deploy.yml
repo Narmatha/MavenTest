@@ -11,12 +11,5 @@
     copy: src=target/java-example.war dest={{ warRemotePath }}/{{ warName }} 
     
   - name: kill process is tomcat is still running
-    shell: kill $(ps aux | grep 'tomcat' | awk '{print $2}'
-    when: service_apache_status.stdout != ''
-
-  - command: sleep 1s
-    when: service_apache_status.stdout != ''
-
-  - name: ==> startup qle tomcat , path = {{ tomcat_path }}/bin/startup.sh
-    shell: setsid /bin/sh -i -c "{{ tomcat_path }}/bin/startup.sh"
+    shell: sudo service tomcat7 restart
     
