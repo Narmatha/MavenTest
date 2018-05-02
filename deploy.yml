@@ -2,13 +2,12 @@
 - hosts: all
   remote_user: vagrant 
   vars:
-  - warName: java-example.war
-  - tomcat_path: /opt/tomcat
-  - warRemotePath: /opt/tomcat/webapps  
+  - warName: java-example.war  
+  - warRemotePath: /var/lib/tomcat7
 
   tasks:
   - name: Copy WAR to server
-    copy: src=target/java-example.war dest={{ warRemotePath }}/{{ warName }} 
+    copy: src=target/{{ warName }} dest={{ warRemotePath }}/{{ warName }} 
     
   - name: kill process is tomcat is still running
     shell: sudo service tomcat7 restart
