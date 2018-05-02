@@ -3,7 +3,7 @@
   remote_user: vagrant 
   vars:
   - warName: java-example.war  
-  - warRemotePath: /var/lib/tomcat7
+  - warRemotePath: /var/lib/tomcat7/webapps
 
   tasks:
   - name: Copy WAR to server
