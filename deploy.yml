@@ -12,3 +12,13 @@
   - name: kill process is tomcat is still running
     shell: sudo service tomcat7 restart
     
+  - name: Install subversion
+    apt: name=subversion state=present      
+    
+  - name: Checkout SVN
+    subversion: 
+      repo: svn+ssh://svn.happiestminds.com/svn/redmin99/smiles 
+      dest: /home/vagrant/ 
+      username: redime.sonar 
+      password: Admin@1231
+    
