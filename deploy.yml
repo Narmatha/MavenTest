@@ -19,7 +19,7 @@
   - name: Checkout SVN
     subversion: 
       repo: svn+ssh://svn.happiestminds.com/svn/redmin99/smiles 
-      dest: /home/vagrant/ 
+      dest: /home/vagrant/smiles/
       username: redime.sonar 
       password: Admin@1231
     
